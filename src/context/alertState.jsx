@@ -3,12 +3,6 @@ import AlertContext from './alertContext'
 import alertReducer  from './alertReducer'
 import {
     NO_ALERT,
-    PRIMARY_ALERT,
-    SECONDARY_ALERT,
-    SUCCESS_ALERT,
-    DANGER_ALERT,
-    INFO_ALERT,
-    WARNING_ALERT,
 } from '../types';
 
 const AlertState = ({children}) => {
@@ -19,7 +13,6 @@ const AlertState = ({children}) => {
         btnClass: null
     }
 
-    // Dispatch para ejecutar las acciones. Estado a ser modificado.
     const [state, dispatch] = useReducer(alertReducer, initialState);
 
     const noAlert = () => {
@@ -28,34 +21,9 @@ const AlertState = ({children}) => {
         })
     }
 
-    const primaryAlert = () => {
+    const newAlert = type => {
         dispatch({
-            type:PRIMARY_ALERT,
-        })
-    }
-    const secondaryAlert = () => {
-        dispatch({
-            type:SECONDARY_ALERT,
-        })
-    }
-    const successAlert = () => {
-        dispatch({
-            type:SUCCESS_ALERT,
-        })
-    }
-    const dangerAlert = () => {
-        dispatch({
-            type:DANGER_ALERT,
-        })
-    }
-    const infoAlert = () => {
-        dispatch({
-            type:INFO_ALERT,
-        })
-    }
-    const warningAlert = () => {
-        dispatch({
-            type:WARNING_ALERT,
+            type
         })
     }
 
@@ -66,13 +34,7 @@ const AlertState = ({children}) => {
                 msg:state.msg,
                 btnClass:state.btnClass,
                 noAlert,
-                primaryAlert,
-                secondaryAlert,
-                successAlert,
-                dangerAlert,
-                infoAlert,
-                warningAlert
-
+                newAlert
             }}
         >
         {children}

@@ -1,26 +1,41 @@
-import React,{useContext} from 'react'
+import React,{ useContext } from 'react'
 import AlertContext from '../context/alertContext'
+import {
+    PRIMARY_ALERT,
+    SECONDARY_ALERT,
+    SUCCESS_ALERT,
+    DANGER_ALERT,
+    INFO_ALERT,
+    WARNING_ALERT,
+} from '../types';
+import Button from './Button';
 
 const ButtonGroup = () => {
 
     const alertContext = useContext(AlertContext);
-    const { 
-        primaryAlert,
-        secondaryAlert,
-        successAlert,
-        dangerAlert,
-        infoAlert,
-        warningAlert 
-    } = alertContext;
+    const { newAlert } = alertContext;
+
+    const btnList = [
+        {id:1,btnClass:'primary',btnMsg:'Mensaje1',type:PRIMARY_ALERT},
+        {id:2,btnClass:'secondary',btnMsg:'Mensaje2',type:SECONDARY_ALERT},
+        {id:3,btnClass:'success',btnMsg:'Mensaje3',type:SUCCESS_ALERT},
+        {id:4,btnClass:'danger',btnMsg:'Mensaje4',type:DANGER_ALERT},
+        {id:5,btnClass:'info',btnMsg:'Mensaje5',type:INFO_ALERT},
+        {id:6,btnClass:'warning',btnMsg:'Mensaje6',type:WARNING_ALERT},
+    ]
 
     return (
         <div className="btn-group btn-group-lg mt-5">
-            <button type='button' onClick={()=> primaryAlert()} className="btn btn-primary">Primary</button>
-            <button type='button' onClick={()=> secondaryAlert()} className="btn btn-secondary">Secondary</button>
-            <button type='button' onClick={()=> successAlert()} className="btn btn-success">Success</button>
-            <button type='button' onClick={()=> dangerAlert()} className="btn btn-danger">Danger</button>
-            <button type='button' onClick={()=> infoAlert()} className="btn btn-info">Info</button>
-            <button type='button' onClick={()=> warningAlert()} className="btn btn-warning">Warning</button>
+            {
+                btnList.map(btn=> (
+                    <Button
+                        key={btn.id}
+                        btnClass={btn.btnClass}
+                        btnMsg={btn.btnMsg}
+                        btnAction={()=>newAlert(btn.type)} 
+                    />
+                ))
+            }
         </div>
     )
 }
