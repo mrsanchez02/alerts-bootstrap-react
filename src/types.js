@@ -1,0 +1,7 @@
+export const NO_ALERT = 'NO_ALERT';
+export const PRIMARY_ALERT = 'PRIMARY_ALERT';
+export const SECONDARY_ALERT = 'SECONDARY_ALERT';
+export const SUCCESS_ALERT = 'SUCCESS_ALERT';
+export const DANGER_ALERT = 'DANGER_ALERT';
+export const INFO_ALERT = 'INFO_ALERT';
+export const WARNING_ALERT = 'WARNING_ALERT';

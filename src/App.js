@@ -1,24 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import ButtonGroup from "./components/ButtonGroup";
+import DisplayAlert from "./components/DisplayAlert";
+import AlertState from "./context/alertState";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AlertState>
+      <div className="container">
+        <DisplayAlert/>
+        <h1 className="display-1">Alerts Showtime</h1>
+        <hr/>
+        <ButtonGroup/>
+      </div>
+    </AlertState>
   );
 }
 
